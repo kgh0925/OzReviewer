@@ -5,65 +5,82 @@
 using namespace std;
 
 void Start() {
-	cout << "정수 3개 입력 : ";
-	int num1, num2, num3;
-	cin >> num1 >> num2 >> num3;
-	cout << "num1 + num2 : " << num1 + num2 << endl;
-	cout << "num1 - num2 : " << num1 - num2 << endl;
-	cout << "num1 * num2 : " << num1 * num2 << endl;
-	cout << "num1 / num2 : " << num1 / num2 << endl;
-	cout << "num1 % num2 : " << num1 % num2 << endl;
+	
+	int a;
+	do {
+		cout << "정수 입력 (-10 ~ 10) : ";
+		cin >> a;
 
-	cout << "(num1 + num2) * (num3 + num1) % num1 : " << (num1 + num2) * (num3 + num1) % num1 << endl;
-	cout << "(num3 % num2) + (num1 * 2) : " << (num3 % num2) + (num1 * 2) << endl;
-	cout << "(num1 + num2 + num3) % (num3 + 1)  : " << (num1 + num2 + num3) % (num3 + 1) << endl;
-
-	cout << "정수 2개 입력 : ";
-	int n1, n2;
-	cin >> n1 >> n2;
-
-	cout << "몫 : " << n1 / n2 << ", 나머지 : " << n1 % n2 << endl;
-
-	cout << "정수 2개 입력 : ";
-	int a, b;
-	cin >> a >> b;
-
-	int quotient = a / b;
-	int remainder = a % b;
-
-	int restoredA = quotient * b + remainder;
-	cout << "몫: " << quotient << '\n';
-	cout << "나머지: " << remainder << '\n';
-	cout << "원래 숫자 a: " << a << '\n';
-	cout << "수식으로 계산된 값: " << restoredA << '\n';
-
-	int size = 5;
-	for (int i = 1; i <= size; i++) {
-		for (int j = 0; j < size - i; j++)
-		{
-			cout << "  ";
+		if (a > 10 || a < -10) {
+			cout << "-10부터 10 사이의 값을 입력해주세요." << endl;
 		}
+	} while (a > 10 || a < -10);
 
-		for (int j = 0; j < 2 * i - 1; j++)
-		{
-			cout << "* ";
-		}
-		cout << '\n';
+	int b = 0;
+	while (a > -15) {
+		b++;
+		a -= 5;
 	}
-	for (int i = size - 1; i >= 1; i--)
-	{
-		for (int j = 0; j < size - i; j++)
-		{
-			cout << "  ";
-		}
+	cout << "-5씩 연산한 정수의 값, 연산 횟수  : " << a << " , " << b <<endl;
 
-		for (int j = 0; j < 2 * i - 1; j++)
-		{
-			cout << "* ";
-		}
+    int num1, num2;
 
-		cout << '\n';
-	}
+    cout << "두 개의 정수 입력 : ";
+    cin >> num1 >> num2;
+
+    int minNum;
+    int maxNum;
+
+    if (num1 < num2)
+    {
+        minNum = num1;
+        maxNum = num2;
+    }
+    else
+    {
+        minNum = num2;
+        maxNum = num1;
+    }
+
+    int current = minNum;
+    int count = 0;
+    int sum = 0;
+
+    do
+    {
+        if (current % 3 == 0)
+        {
+            if (count > 0)
+            {
+                cout << ", ";
+            }
+
+            cout << current;
+
+            count++;
+            sum += current;
+        }
+
+        current++;
+
+    } while (current <= maxNum);
+
+    cout << endl;
+    cout << "총 갯수 : " << count
+        << " / 합 출력 : " << sum << endl;
+
+    cout << "출력할 구구단의 단 수 입력 : ";
+    
+    int dan;
+    cin >> dan;
+    if (dan > 9 || dan < 2) return;
+    
+    int sum_d = 0;
+    for (int i = 1; i < 10; i++) {
+        cout << dan << " X " << i << " = " << dan * i << endl;
+        sum_d += (dan * i);
+    }
+    cout << "단의 곱셉 결과의 합 : " << sum_d << endl;
 }
 
 int main() {
